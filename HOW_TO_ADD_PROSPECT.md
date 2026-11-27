@@ -145,6 +145,20 @@ Cloudflare Dashboard → **Workers & Pages** → **Create** → **Pages** → **
 
 > Agar build log me `_redirects` ke liye "infinite loop" jaisa warning aaye to ghabrao mat — Cloudflare Pages me jab `404.html` nahi hota to wo already SPA fallback deta hai, routes phir bhi chalenge.
 
+#### Agar project **Workers** ke through bana hai (Pages ki jagah)
+
+Naye Cloudflare dashboard me "Workers & Pages → Create" kabhi-kabhi **Worker** bana deta hai, jisme build ke baad **Deploy command** `npx wrangler deploy` chalta hai. Ye bhi bilkul theek hai — repo me `wrangler.jsonc` already hai jo `dist/` ko static site ki tarah serve karta hai (SPA routing ke saath).
+
+| Setting | Value |
+|---|---|
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy` |
+| Root directory | *(khali chhodo)* |
+
+> ⚠️ Agar `wrangler.jsonc` delete kar doge to deploy fail hoga: *"The version of Vite used in the project ("5.4.21") cannot be automatically configured"*. Ye file rehne do.
+
+Live URL hoga: `https://ozmeum-web.<tumhara-subdomain>.workers.dev`. Custom domain ke liye: Worker → **Settings → Domains & Routes → Add → Custom domain** → `ozmeum.com`.
+
 ### Step 3: Custom domain ozmeum.com jodo
 
 1. Pages project → **Custom domains** → **Set up a custom domain** → `ozmeum.com` daalo (phir `www.ozmeum.com` bhi add karo).

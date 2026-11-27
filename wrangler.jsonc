@@ -1,0 +1,13 @@
+// Cloudflare Workers static-assets config.
+// `npm run build` creates dist/, then `npx wrangler deploy` uploads it.
+// Having this file stops Wrangler from trying to auto-configure the Vite project.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ozmeum-web",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    // React Router routes like /p/:slug and /embed/:slug fall back to index.html
+    "not_found_handling": "single-page-application"
+  }
+}
