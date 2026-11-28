@@ -4,7 +4,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "ozmeum-web",
-  "compatibility_date": "2026-11-01",
+  "compatibility_date": "2026-05-01",
   "assets": {
     "directory": "./dist",
     // React Router routes like /p/:slug and /embed/:slug fall back to index.html

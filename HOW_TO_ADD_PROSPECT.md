@@ -141,9 +141,9 @@ Cloudflare Dashboard → **Workers & Pages** → **Create** → **Pages** → **
 
 **Save and Deploy** dabao. 1–2 minute me `https://ozmeum-web.pages.dev` pe site live.
 
-`public/_redirects` (`/* /index.html 200`) already hai — isse `/p/...` aur `/embed/...` jaise React Router URLs refresh pe bhi 404 nahi denge. `public/_headers` caching set karta hai.
+`/p/...` aur `/embed/...` jaise React Router URLs refresh pe bhi 404 nahi denge: Workers pe `wrangler.jsonc` ka `"not_found_handling": "single-page-application"` ye sambhalta hai, aur Pages pe (jab `404.html` nahi hota) Cloudflare khud SPA fallback deta hai. `public/_headers` caching set karta hai.
 
-> Agar build log me `_redirects` ke liye "infinite loop" jaisa warning aaye to ghabrao mat — Cloudflare Pages me jab `404.html` nahi hota to wo already SPA fallback deta hai, routes phir bhi chalenge.
+> ⚠️ `public/_redirects` me `/* /index.html 200` wapas **mat** daalna. Workers isse "Infinite loop detected" bol ke deploy fail kar deta hai.
 
 #### Agar project **Workers** ke through bana hai (Pages ki jagah)
 
